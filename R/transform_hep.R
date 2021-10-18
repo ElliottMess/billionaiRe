@@ -239,6 +239,7 @@ transform_prev_cmpgn_data <- function(df,
       !!sym(type_col) := dplyr::case_when(
         !is.na(.data[[type_col]]) ~ .data[[type_col]],
         dplyr::row_number() <= max(which(!is.na(.data[[value[i]]])), -Inf) ~ "reported",
+        .data[[year]] <= lubridate::year(Sys.Date()) ~ "imputed",
         TRUE ~ "projected"
       ),
       !!sym(source_col) := ifelse(length(unique(.data[[source_col]][!is.na(.data[[source_col]])])) == 1,
