@@ -52,21 +52,12 @@ extrapolate_campaign_data <- function(pathogen,
 extrapolate_campaign_vector <- function(x, n) {
   not_na <- which(!is.na(x))
   if (length(not_na) > 0) {
-    x_sum <- zoo::rollapply(x,
+    zoo::rollapply(x,
       n,
       sum,
       na.rm = T,
       partial = TRUE,
       align = "right"
-    )
-
-
-
-    flat_spot <- max(not_na)
-
-    ifelse(1:length(x) <= flat_spot,
-      x_sum,
-      x_sum[flat_spot]
     )
   } else {
     x
