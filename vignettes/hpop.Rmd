@@ -37,4 +37,3 @@ hpop_df %>%
   calculate_hpop_billion() %>%
   dplyr::filter(stringr::str_detect(ind, "hpop_healthier"))
 ```
-
