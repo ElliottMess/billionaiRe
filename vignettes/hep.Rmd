@@ -34,9 +34,13 @@ hep_df %>%
   transform_hep_data() %>%
   calculate_hep_components() %>%
   calculate_hep_billion(end_year = 2023) %>%
-  dplyr::filter(ind %in% c("prevent",
-                           "espar",
-                           "detect_respond",
-                           "hep_idx"),
-                year == 2023)
+  dplyr::filter(
+    ind %in% c(
+      "prevent",
+      "espar",
+      "detect_respond",
+      "hep_idx"
+    ),
+    year == 2023
+  )
 ```
